@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     //Declaring the variables from activity_main
@@ -39,10 +40,24 @@ public class MainActivity extends AppCompatActivity {
                 String noDaftar = etNomorDaftar.getText().toString();
                 String spJalurs = spJalur.getSelectedItem().toString();
 
-                if(nama.trim().equals("") && noDaftar.trim().equals("")){
-                    etNama.setError("Nama wajib diketik");
-                    etNomorDaftar.setError("Nomor pendaftaran wajib diketik");
-                } else{
+                if(nama.trim().equals("")){
+                    etNama.setError("Nama wajib diketik!");
+
+                }
+                else if(noDaftar.trim().equals("")){
+                    etNomorDaftar.setError("Nomor pendaftaran wajib diketik!");
+                }
+
+                else if(!(cbKonfirmasi.isChecked())){
+                    cbKonfirmasi.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(MainActivity.this, "Anda belum mencentang Konfirmasi!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+                else{
                     Intent pindah = new Intent(MainActivity.this, SecondActivity.class);
                     pindah.putExtra("xNama", nama);
                     pindah.putExtra("xNoDaftar", noDaftar);

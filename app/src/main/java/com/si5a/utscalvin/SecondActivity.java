@@ -14,8 +14,7 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Declaring the variables from activity_second
-        TextView tvNama, tvNoDaftar;
-        Spinner spJalurs;
+        TextView tvNama, tvNoDaftar, tvJalurs;
 
         super.onCreate(savedInstanceState);
 
@@ -26,14 +25,20 @@ public class SecondActivity extends AppCompatActivity {
         //Catching the name, etc
         tvNama = findViewById(R.id.tv_nama);
         tvNoDaftar = findViewById(R.id.tv_nomor_pendaftaran);
-        spJalurs = findViewById(R.id.tv_jalur);
+        tvJalurs = findViewById(R.id.tv_jalur);
+
+        //GetString
         Intent terima = getIntent();
         String yNama = terima.getStringExtra("xNama");
         String yNoDaftar = terima.getStringExtra("xNoDaftar");
         String ySpJalur = terima.getStringExtra("xJalur");
+
+        //SetText
         tvNama.setText(yNama);
         tvNoDaftar.setText(yNoDaftar);
-        spJalurs.setText(ySpJalur);
+        tvJalurs.setText(ySpJalur);
+
+
 
 
 
